@@ -21,17 +21,15 @@ public class PartB {
 	public static String decimalConvertToHex(int dec) {
         int reminder = 0;
         String hexStr = "";
-        String fin = "";
         
-        System.out.println(hexStr);
-   	 	hexStr = decimalConvertToHex(dec);
-   	 	System.out.println(hexStr);
-   	 	
+
         if(dec != 0) {
         	
              reminder = dec % 16 ;
              dec = dec - reminder;
              dec = dec / 16;
+             
+        	 hexStr = decimalConvertToHex(dec);
              
              if(reminder < 10) {
                   hexStr = reminder + hexStr;

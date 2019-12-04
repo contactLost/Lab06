@@ -17,4 +17,75 @@
  */
 public class PartD {
 
+	public static void main(String[] args) {
+
+		int n = 3;
+
+		printAll(n);
+	}
+
+	public static void printAll(int n) { // Take n and pass numbers to check according to n 
+
+		int tempNum = (int) Math.pow(10, n - 1);
+		System.out.println("temp: " + tempNum);
+		if ( check(tempNum) ) {
+
+			if ( ( tempNum % 2 ) == 0) {
+
+				System.out.println(tempNum);
+				printAllNum(n , tempNum);
+			}
+		}
+		else {
+			printAllNum(n , tempNum);
+		}
+	}
+
+	public static void printAllNum(int n , int tempNum) { // Take n and pass numbers to check according to n 
+
+		if(tempNum < Math.pow(10, n)) {
+			tempNum++;
+			//System.out.println("temp: " + tempNum);
+			if ( check(tempNum) ) {
+
+				if ( true ) { //(tempNum % 2) == 0 )
+
+					System.out.println(tempNum);
+					printAllNum(n , tempNum);
+				}
+			}
+			else {
+				printAllNum(n , tempNum);
+			}
+		}
+	}
+
+
+
+	public static boolean check(int num) { //n kaç basamaklý olduðu
+
+		String tempStr = Integer.toString(num);
+		int first = 0;
+		int second = 0;
+
+		if (num > 9 ) {	//Check if it is not a single digit number
+			first = Integer.parseInt( ( tempStr.substring( 0 , 1 ) ) );
+			second = Integer.parseInt( ( tempStr.substring( 1 , 2 ) ) );
+
+
+			if (first < second) {
+				if (num > 100) {
+					return check( Integer.parseInt( ( tempStr.substring( 1 ) ) ) );
+				}
+				else {
+					return true;
+				}
+			}
+			else {
+				return false;
+			}
+
+		}
+		return false;
+	}
 }
